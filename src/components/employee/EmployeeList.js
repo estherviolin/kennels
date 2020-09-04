@@ -4,7 +4,7 @@ import {Employee} from "./Employee"
 import "./Employee.css"
 
 
-export const EmployeeList = () => {
+export const EmployeeList = (props) => {
     const { employees, getEmployees } = useContext(EmployeeContext) //imported from provider
 
     useEffect(() => {
@@ -16,10 +16,16 @@ export const EmployeeList = () => {
 
     return (
         <div className="employees">
-            {
-                employees.map(employee => <Employee key={employee.id} employee={employee} />)
-            }       
-
+            <h1>Employees</h1>
+            <button onClick = {() => props.history.push("/employees/create")}>
+                Add Employee
+            </button>
+            <article className="employeeList">
+                {
+                    employees.map(employee => <Employee key={employee.id} employee={employee} />)
+                }       
+            </article>
+          
         </div>
     )
 }
