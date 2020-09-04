@@ -2,10 +2,10 @@ import React, { useContext, useRef, useEffect } from "react"
 import { EmployeeContext } from "./EmployeeProvider"
 import { LocationContext } from "../location/LocationProvider"
 import { AnimalContext } from "../animal/AnimalProvider"
-import "./Employees.css"
+import "./Employee.css"
 
 export const EmployeeForm = (props) => {
-    const { addEmployee } = useContext(EmployeeContext)
+    const { addEmployees } = useContext(EmployeeContext)
     const { locations, getLocations } = useContext(LocationContext)
     const { animals, getAnimals } = useContext(AnimalContext)
 
@@ -41,7 +41,7 @@ export const EmployeeForm = (props) => {
         if (locationId === 0) {
             window.alert("Please select a location")
         } else {
-            addEmployee({
+            addEmployees({
                 name: name.current.value,
                 locationId,
                 animalId
@@ -89,6 +89,7 @@ export const EmployeeForm = (props) => {
                 onClick={evt => {
                     evt.preventDefault() // Prevent browser from submitting the form
                     constructNewEmployee()
+                    
                 }}
                 className="btn btn-primary">
                 Save Employee
