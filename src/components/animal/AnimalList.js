@@ -7,7 +7,7 @@ import "./Animals.css"
 
 
 
-export const AnimalList = () => {
+export const AnimalList = (props) => {
     const { animals, getAnimals } = useContext(AnimalContext) //imported from provider
     const { locations, getLocations } = useContext(LocationContext)
     const { customers, getCustomers } = useContext(CustomerContext)
@@ -20,6 +20,10 @@ export const AnimalList = () => {
 
     return (
         <div className="animals">
+            <h1>Animals</h1>
+            <button onClick={() => props.history.push("/animals/create")}>
+                Make Appointment
+            </button>
             {
                 animals.map(animal => {
                     const owner = customers.find(customer => customer.id === animal.customerId) || {}
