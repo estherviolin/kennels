@@ -20,6 +20,7 @@ export const AnimalForm = (props) => {
     const location = useRef(null)
     const name = useRef(null)
     const breed = useRef(null)
+    const customer = useRef(null)
     
 
     /*
@@ -37,6 +38,7 @@ export const AnimalForm = (props) => {
             but rather `.current.value` now in React.
         */
         const locationId = parseInt(location.current.value)
+        const customerId = parseInt(customer.current.value)
 
         if (locationId === 0) {
             window.alert("Please select a location")
@@ -45,7 +47,7 @@ export const AnimalForm = (props) => {
                 name: name.current.value,
                 breed: breed.current.value,
                 locationId,
-                customerId: parseInt(localStorage.getItem("kennel_customer"))
+                customerId
             })
             .then(() => props.history.push("/animals"))
         }
@@ -72,6 +74,19 @@ export const AnimalForm = (props) => {
                     <select defaultValue="" name="location" ref={location} id="animalLocation" className="form-control" >
                         <option value="0">Select a location</option>
                         {locations.map(e => (
+                            <option key={e.id} value={e.id}>
+                                {e.name}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="customer">Choose a customer: </label>
+                    <select defaultValue="" name="customer" ref={customer} id="animalCustomer" className="form-control" >
+                        <option value="0">Select a customer</option>
+                        {customers.map(e => (
                             <option key={e.id} value={e.id}>
                                 {e.name}
                             </option>

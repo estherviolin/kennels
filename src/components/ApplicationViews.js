@@ -25,7 +25,7 @@ export const ApplicationViews = (props) => {
                 <LocationProvider>
                     <CustomerProvider>
                         {/* Render the animal list when http://localhost:3000/animals */}
-                        <Route path="/animals" render={
+                        <Route exact path="/animals" render={
                             props => <AnimalList {...props}/>
                         } />
                         <Route exact path="/animals/create" render={
