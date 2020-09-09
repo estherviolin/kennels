@@ -7,7 +7,7 @@ import { LocationContext } from "../location/LocationProvider"
 
 export const EmployeeList = (props) => {
     const { employees, getEmployees } = useContext(EmployeeContext) //imported from provider
-    const { locations, getLocations } = useContext(LocationContext)
+  
 
     useEffect(() => {
         getEmployees()
@@ -23,10 +23,10 @@ export const EmployeeList = (props) => {
             </button>
             <article className="employeeList">
                 {
-                    employees.map(employee => {
-                        const clinic = locations.find(location => location.id === employee.locationId) || {}
-
-                        return <Employee key={employee.id} employee={employee} location={clinic} />
+                     employees.map(employee => {
+                        return <Link key={employee.id} to={`/employees/${employee.id}`}>
+                            <h3>{employee.name}</h3>
+                        </Link>
                     })
                 }
             </article>
@@ -34,3 +34,9 @@ export const EmployeeList = (props) => {
         </div>
     )
 }
+
+// employees.map(employee => {
+//     const clinic = locations.find(location => location.id === employee.locationId) || {}
+
+//     return <Employee key={employee.id} employee={employee} location={clinic} />
+// })
