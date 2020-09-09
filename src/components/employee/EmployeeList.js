@@ -1,8 +1,9 @@
 import React, { useContext, useEffect } from "react"
 import { EmployeeContext } from "./EmployeeProvider"
-import { Employee } from "./Employee"
+
 import "./Employee.css"
-import { LocationContext } from "../location/LocationProvider"
+
+import { Link } from "react-router-dom"
 
 
 export const EmployeeList = (props) => {
@@ -11,7 +12,7 @@ export const EmployeeList = (props) => {
 
     useEffect(() => {
         getEmployees()
-        getLocations()
+       
     }, [])
 
 
