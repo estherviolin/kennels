@@ -13,6 +13,7 @@ import { AnimalForm } from "./animal/AnimalForm"
 import { EmployeeDetail } from "./employee/EmployeeDetail"
 import { AnimalDetails } from "./animal/AnimalDetail"
 import { LocationDetail } from "./location/LocationDetail"
+import { AnimalSearch } from "./animal/AnimalSearch"
 
 export const ApplicationViews = (props) => {
     return (
@@ -20,15 +21,15 @@ export const ApplicationViews = (props) => {
             <LocationProvider>
                 <EmployeeProvider>
                     <AnimalProvider>
-                {/* Render the location list when http://localhost:3000/ */}
-                <Route exact path="/">
-                    <LocationList />
-                </Route>
-                <Route path="/locations/:locationId(\d+)" render={
+                        {/* Render the location list when http://localhost:3000/ */}
+                        <Route exact path="/">
+                            <LocationList />
+                        </Route>
+                        <Route path="/locations/:locationId(\d+)" render={
                             props => <LocationDetail {...props} />
                         } />
-                        </AnimalProvider>
-                        </EmployeeProvider>
+                    </AnimalProvider>
+                </EmployeeProvider>
             </LocationProvider>
 
             <AnimalProvider>
@@ -36,7 +37,12 @@ export const ApplicationViews = (props) => {
                     <CustomerProvider>
                         {/* Render the animal list when http://localhost:3000/animals */}
                         <Route exact path="/animals" render={
-                            props => <AnimalList {...props} />
+                            props => {
+                                return <>
+                                    <AnimalSearch />
+                                    <AnimalList {...props} />
+                                </>
+                            }
                         } />
                         <Route exact path="/animals/create" render={
                             props => <AnimalForm {...props} />
