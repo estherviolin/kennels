@@ -10,7 +10,7 @@ export const AnimalDetails = (props) => {
     useEffect(() => {
         const animalId = parseInt(props.match.params.animalId)
         getAnimalById(animalId)
-            .then(setAnimal)
+            .then(setAnimal)               
     }, [])
 
     return (
