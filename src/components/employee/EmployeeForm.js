@@ -28,6 +28,8 @@ export const EmployeeForm = (props) => {
        getAnimals().then(getLocations)
     }, [])
 
+
+
     const constructNewEmployee = () => {
         /*
             The `location` and `animal` variables below are
